@@ -3,21 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>西小电语言 · 加密解密</title>
+  <title>基于西小电嬉笑癫79基米的加密解密器</title>
   <meta name="description" content="把文字变成西小电语言：西 小 电 嘻 笑 癫 9 7，两两组词加密，一键解密还原。">
+  <link rel="icon" href="img/mascot.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="bg-photo" aria-hidden="true"></div>
+  <div class="bg-float" id="bg-float" aria-hidden="true"></div>
+
   <main class="container">
     <header>
-      <h1><span class="logo">西</span><span class="logo">小</span><span class="logo">电</span>语言</h1>
-      <p class="subtitle">西 小 电 嘻 笑 癫 9 7 —— 八字成词六十四，「基米」补位始成文</p>
+      <h1><span class="logo">西</span><span class="logo">小</span><span class="logo">电</span><span class="grad">加密解密器</span></h1>
+      <p class="subtitle">基于西小电嬉笑癫79基米的加密解密器</p>
     </header>
 
     <section class="card">
       <div class="tabs" role="tablist">
-        <button id="tab-encode" class="tab active" role="tab" aria-selected="true">🔒 加密 → 西小电</button>
-        <button id="tab-decode" class="tab" role="tab" aria-selected="false">🔓 解密 → 正常文字</button>
+        <button id="tab-encode" class="tab active" role="tab" aria-selected="true">加密 → 西小电</button>
+        <button id="tab-decode" class="tab" role="tab" aria-selected="false">解密 → 正常文字</button>
       </div>
 
       <div class="editor">
@@ -32,7 +36,9 @@
         </div>
       </div>
 
-      <div class="arrow" aria-hidden="true">▼</div>
+      <div class="arrow" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M13 2 L4 14 h6 L9 22 L20 9 h-7 Z" fill="currentColor"/></svg>
+      </div>
 
       <div class="editor">
         <div class="editor-label-row">
@@ -58,8 +64,22 @@
       <p>例如「<b>西</b>」加密后是 <code>7电小电电977</code>，「<b>a</b>」加密后是 <code>嘻西电西基米基米</code>，「<b>ab</b>」加密后是 <code>嘻西电9小西基米</code>。</p>
     </details>
 
+    <details class="card dict">
+      <summary>词典 · 64 个词语 + 基米</summary>
+      <div class="dict-grid" id="dict-grid"></div>
+      <p class="dict-note">颜色按词语的首字分类，「基米」是补位词，只在结尾出现，对应 Base64 的「=」。</p>
+    </details>
+
+    <div class="lightbox" id="lightbox" hidden>
+      <button class="lightbox-close" id="lightbox-close" title="关闭">✕</button>
+      <button class="lightbox-nav prev" id="lightbox-prev" title="上一张">‹</button>
+      <img class="lightbox-img" id="lightbox-img" src="" alt="西小电图">
+      <button class="lightbox-nav next" id="lightbox-next" title="下一张">›</button>
+    </div>
+
     <footer>
       <p>纯前端实现，所有转换都在你的浏览器里完成，不上传任何数据。</p>
+      <button id="btn-gallery" class="ghost" title="想看的时候再点">📸 图鉴</button>
     </footer>
   </main>
 
