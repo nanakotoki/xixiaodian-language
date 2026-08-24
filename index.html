@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>西小电语言 · 加密解密</title>
+  <meta name="description" content="把文字变成西小电语言：西 小 电 嘻 笑 癫 9 7，两两组词加密，一键解密还原。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1><span class="logo">西</span><span class="logo">小</span><span class="logo">电</span>语言</h1>
+      <p class="subtitle">西 小 电 嘻 笑 癫 9 7 —— 八字成词六十四，「基米」补位始成文</p>
+    </header>
+
+    <section class="card">
+      <div class="tabs" role="tablist">
+        <button id="tab-encode" class="tab active" role="tab" aria-selected="true">🔒 加密 → 西小电</button>
+        <button id="tab-decode" class="tab" role="tab" aria-selected="false">🔓 解密 → 正常文字</button>
+      </div>
+
+      <div class="editor">
+        <label class="editor-label" for="input" id="input-label">输入明文</label>
+        <textarea id="input" rows="6" placeholder="在这里输入要加密的文字…" spellcheck="false"></textarea>
+        <div class="toolbar">
+          <span class="stats" id="input-stats">0 字</span>
+          <span class="actions">
+            <button id="btn-sample" class="ghost">示例</button>
+            <button id="btn-clear" class="ghost">清空</button>
+          </span>
+        </div>
+      </div>
+
+      <div class="arrow" aria-hidden="true">▼</div>
+
+      <div class="editor">
+        <div class="editor-label-row">
+          <label class="editor-label" for="output" id="output-label">西小电语言</label>
+          <button id="btn-copy" class="primary">复制结果</button>
+        </div>
+        <textarea id="output" rows="6" readonly placeholder="结果将在这里出现…" spellcheck="false"></textarea>
+        <div class="toolbar">
+          <span class="stats" id="output-stats"></span>
+          <span class="error" id="error" hidden></span>
+        </div>
+      </div>
+    </section>
+
+    <details class="card how">
+      <summary>原理是什么？</summary>
+      <ol>
+        <li>文字先按 <b>UTF-8</b> 转换成字节，再按每 <b>6 位</b>一组切分（与 Base64 同理）；</li>
+        <li>每个 6 位值是 0~63，正好对应 <b>西 小 电 嘻 笑 癫 9 7</b> 八个字两两组合出的 <b>64 个词语</b>（含自身组合，如「西西」「77」）；</li>
+        <li>当最后一组字节不足 3 个时，用补位词「<b>基米</b>」（对应 Base64 的「=」，即第 65 个词语）补齐；</li>
+        <li>把这些词语连起来，就得到了西小电语言。解密则是逆过程。</li>
+      </ol>
+      <p>例如「<b>西</b>」加密后是 <code>7电小电电977</code>，「<b>a</b>」加密后是 <code>嘻西电西基米基米</code>，「<b>ab</b>」加密后是 <code>嘻西电9小西基米</code>。</p>
+    </details>
+
+    <footer>
+      <p>纯前端实现，所有转换都在你的浏览器里完成，不上传任何数据。</p>
+    </footer>
+  </main>
+
+  <script src="codec.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

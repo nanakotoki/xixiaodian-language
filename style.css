@@ -1,0 +1,213 @@
+:root {
+  --bg: #0f1220;
+  --card: #181c2f;
+  --card-2: #1e2340;
+  --text: #e8eaf6;
+  --muted: #9aa1c0;
+  --accent: #6c8cff;
+  --accent-2: #4dd6a8;
+  --error: #ff7b8a;
+  --border: #2a3054;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "PingFang SC", "Microsoft YaHei", "Segoe UI", system-ui, sans-serif;
+  background: radial-gradient(1200px 600px at 70% -10%, #232a55 0%, var(--bg) 55%);
+  color: var(--text);
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+
+header { text-align: center; margin-bottom: 28px; }
+
+h1 {
+  font-size: 32px;
+  margin: 0 0 8px;
+  letter-spacing: 2px;
+}
+
+.logo {
+  display: inline-block;
+  width: 46px;
+  height: 46px;
+  line-height: 46px;
+  margin: 0 4px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #0f1220;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.subtitle { color: var(--muted); margin: 0; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  background: var(--card-2);
+  padding: 6px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 15px;
+  cursor: pointer;
+  transition: all .18s ease;
+}
+
+.tab.active {
+  background: linear-gradient(135deg, var(--accent), #5a7bff);
+  color: #fff;
+  font-weight: 600;
+}
+
+.editor { margin-bottom: 4px; }
+
+.editor-label {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.editor-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.editor-label-row .editor-label { margin-bottom: 0; }
+
+textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card-2);
+  color: var(--text);
+  font-family: "JetBrains Mono", Consolas, "Courier New", monospace;
+  font-size: 15px;
+  line-height: 1.7;
+  resize: vertical;
+  min-height: 110px;
+  transition: border-color .18s ease;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+textarea[readonly] { color: #c9d4ff; }
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  min-height: 30px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.stats { font-size: 12px; color: var(--muted); }
+
+.error {
+  font-size: 13px;
+  color: var(--error);
+}
+
+.actions { display: flex; gap: 8px; }
+
+button {
+  font-family: inherit;
+}
+
+.ghost {
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all .18s ease;
+}
+
+.ghost:hover { color: var(--text); border-color: var(--accent); }
+
+.primary {
+  padding: 7px 16px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #0f1220;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .12s ease, opacity .18s ease;
+}
+
+.primary:hover { transform: translateY(-1px); }
+.primary:active { transform: translateY(0); }
+.primary.done { opacity: .8; }
+
+.arrow {
+  text-align: center;
+  color: var(--accent);
+  margin: 6px 0 14px;
+  font-size: 14px;
+}
+
+.how summary {
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  user-select: none;
+}
+
+.how ol { margin: 14px 0 8px; padding-left: 20px; color: var(--muted); line-height: 1.9; }
+.how ol b { color: var(--text); }
+.how p { color: var(--muted); margin: 6px 0 0; }
+.how code {
+  background: var(--card-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2px 8px;
+  color: var(--accent-2);
+  font-family: "JetBrains Mono", Consolas, monospace;
+}
+
+footer { text-align: center; color: var(--muted); font-size: 12px; }
+
+@media (max-width: 520px) {
+  .logo { width: 38px; height: 38px; line-height: 38px; font-size: 21px; }
+  h1 { font-size: 24px; }
+  .editor-label-row { flex-direction: column; align-items: stretch; }
+  .editor-label-row .primary { margin-top: 8px; }
+}
